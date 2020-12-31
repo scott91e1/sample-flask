@@ -1,9 +1,7 @@
-from flask import Flask
-from flask import render_template
-
-app = Flask(__name__)
+from molten import App, Route
 
 
-@app.route("/")
-def hello_world():
-    return render_template("index.html")
+def hello(name: str) -> str:
+    return f"Hello {name}!"
+
+app = App(routes=[Route("/hello/{name}", hello)])
